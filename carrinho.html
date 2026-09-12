@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Depósito de bebidas" />
+    <meta
+      name="keywords"
+      content="Depósito de bebidas, Depósito, Bebidas, Cerveja, Refrigerante, Água, Suco"
+    />
+    <meta name="author" content="Hugo Sande Corrêa dos Santos" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Depósito Demo</title>
+  </head>
+  <body>
+    <header>
+      <div class="pesquisar-form">
+        <form id="form-busca" action="#" method="get">
+          <label for="busca" class="sr-only">Procurar no Site</label>
+          <div class="search-wrapper">
+            <input
+              type="search"
+              id="busca"
+              name="q"
+              placeholder="Digite Aqui"
+              required
+              autocomplete="off"
+            />
+            <div id="sugestoes" class="sugestoes"></div>
+          </div>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+      <h1>DEPÓSITO DEMO</h1>
+    </header>
+    <main id="main-carrinho">
+      <section class="secao-carrinho">
+        <h2>Seu Carrinho de Compras</h2>
+        <div id="itens-carrinho" class="itens-carrinho">
+          <div class="carrinho-vazio">
+            <img src="img/carrinho-de-compras.png" alt="Carrinho Vazio" />
+            <p>Seu carrinho está vazio. Que tal adicionar algum item?</p>
+          </div>
+        </div>
+        <div
+          id="alerta-valor-minimo"
+          class="alerta-bloqueio"
+          style="display: none"
+        >
+          ⚠️ <strong>Pedido mínimo não atingido!</strong> O valor mínimo deve
+          ser de, pelo menos, R$ 12,00 para entrega.
+        </div>
+
+        <div class="dados-entrega-container">
+          <h3>Dados para Entrega (OBRIGATÓRIO!)</h3>
+          <form id="form-dados-cliente">
+            <div class="campo-grupo">
+              <label for="cliente-nome">Seu Nome:</label>
+              <input
+                type="text"
+                id="cliente-nome"
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label for="cliente-whats">Seu WhatsApp:</label>
+              <input
+                type="tel"
+                id="cliente-whats"
+                placeholder="(71) 99999-0000"
+                required
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label for="cliente-bairro">Seu Bairro/Localidade:</label>
+              <select id="cliente-bairro" required>
+                <option value="" disabled selected>
+                  Selecione o seu bairro/Localidade
+                </option>
+
+                <option value="centro">Centro</option>
+                <option value="genaro">Genaro</option>
+                <option value="garcia">Garcia</option>
+                <option value="jardim-alvorada">Jardim Alvorada</option>
+                <option value="nova">Nova Dias D'Ávila</option>
+                <option value="urbis">Urbis</option>
+                <option value="parque-capuame">Parque Capuame</option>
+                <option value="parque-petropolis">Parque Petrópolis</option>
+
+                <option value="fora-da-area">
+                  Outro bairro/Localidade (Não listado acima)
+                </option>
+              </select>
+            </div>
+
+            <div
+              id="alerta-regiao"
+              class="alerta-bloqueio"
+              style="display: none"
+            >
+              ⚠️ Infelizmente, nossa entrega própria ainda não atende à sua
+              região.
+            </div>
+
+            <div class="campo-grupo">
+              <label for="cliente-endereco">Endereço Completo:</label>
+              <input
+                type="text"
+                id="cliente-endereco"
+                placeholder="Rua, número, apartamento, bloco..."
+                required
+              />
+            </div>
+
+            <div class="campo-grupo">
+              <label for="cliente-referencia">Ponto de Referência:</label>
+              <input
+                type="text"
+                id="cliente-referencia"
+                placeholder="Ex: Próximo ao mercado X"
+              />
+            </div>
+            <div class="campo-grupo">
+              <label for="cliente-observacao">Observação:</label>
+              <input
+                type="text"
+                id="cliente-observacao"
+                placeholder="Ex: Alterar por produto equivalente, caso não esteja disponível."
+              />
+            </div>
+          </form>
+        </div>
+
+        <!-- AREA 2: Resumo de Valores -->
+        <div class="resumo-carrinho">
+          <div class="linha-resumo">
+            <span>Subtotal:</span>
+            <span id="subtotal-valor">R$ 0,00</span>
+          </div>
+
+          <div class="linha-resumo">
+            <span>Taxa de Entrega:</span>
+            <span id="taxa-valor">R$ 0,00</span>
+          </div>
+
+          <div class="linha-resumo total">
+            <span>Total Geral:</span>
+            <span id="total-valor">R$ 0,00</span>
+          </div>
+        </div>
+
+        <!-- AREA 3: Botões de Ação Atualizados -->
+        <div class="botoes-carrinho">
+          <button id="btn-ir-pagamento" class="btn-finalizar">
+            Finalizar Compra →
+          </button>
+
+          <small class="aviso-taxa-cartao">
+            Pagamentos com cartão possuem acréscimo de 4,99%.
+          </small>
+        </div>
+
+        <div class="btn-voltarcontainer">
+          <a href="index.html" class="btn-voltar">← Voltar para o Início</a>
+          <a href="produtos.html" class="btn-voltar">Continuar Comprando →</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="horario-func">
+        Horário de funcionamento: Segunda a Sexta, 8h às 19h | Sábado, Domingo e
+        Feriados, 9h às 22h
+      </p>
+      <p class="copyright">
+        &copy; 2026 Depósito Demo | Desenvolvido por Hugo Sande Desenvolvimento
+        Web
+      </p>
+      <p class="aviso-demo">
+        Loja demonstrativa. Nenhum pedido ou pagamento é processado.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="description" content="Painel administrativo - Depósito Demo" />
+
+    <meta name="author" content="Hugo Sande Corrêa dos Santos" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Painel Administrativo | Depósito Demo</title>
+  </head>
+
+  <body class="body-admin">
+    <header class="header-admin">
+      <div class="header-admin-conteudo">
+        <span class="admin-label">PAINEL ADMINISTRATIVO</span>
+        <h1>DEPÓSITO DEMO</h1>
+
+        <p>
+          Gerencie os pedidos recebidos e acompanhe o andamento das entregas.
+        </p>
+      </div>
+
+      <div class="admin-status-loja">
+        <span class="admin-status-indicador"></span>
+
+        <div>
+          <span class="admin-status-legenda">Status da loja</span>
+          <strong id="admin-status-loja">Loja aberta</strong>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-admin">
+      <!-- RESUMO OPERACIONAL -->
+      <section class="admin-resumo">
+        <div class="admin-resumo-card destaque">
+          <span class="admin-resumo-label">Novos Pedidos</span>
+          <strong id="qtd-pedidos-novos">0</strong>
+          <span>Aguardando confirmação</span>
+        </div>
+
+        <div class="admin-resumo-card">
+          <span class="admin-resumo-label">Em Preparo</span>
+          <strong id="qtd-pedidos-preparo">0</strong>
+          <span>Pedidos confirmados</span>
+        </div>
+
+        <div class="admin-resumo-card">
+          <span class="admin-resumo-label">Em Entrega</span>
+          <strong id="qtd-pedidos-entrega">0</strong>
+          <span>A caminho do cliente</span>
+        </div>
+
+        <div class="admin-resumo-card">
+          <span class="admin-resumo-label">Pedidos Ativos</span>
+          <strong id="qtd-pedidos-ativos">0</strong>
+          <span>Total em andamento</span>
+        </div>
+      </section>
+
+      <!-- CABEÇALHO DA FILA -->
+      <section class="admin-fila">
+        <div class="admin-fila-topo">
+          <div>
+            <span class="admin-secao-label">PEDIDOS</span>
+            <h2>Fila de Pedidos</h2>
+
+            <p>Confira os dados antes de aceitar ou recusar um pedido.</p>
+          </div>
+
+          <div class="admin-atualizacao">
+            <span class="admin-atualizacao-indicador"></span>
+            <span>Atualização automática</span>
+          </div>
+        </div>
+
+        <!--
+          O JavaScript colocará os pedidos reais aqui.
+
+          Os cards de exemplo abaixo servem para montarmos
+          e visualizarmos o CSS antes da integração.
+        -->
+        <div id="fila-pedidos" class="fila-pedidos"></div>
+
+        <!-- APARECE SE NÃO HOUVER PEDIDOS -->
+        <div id="admin-sem-pedidos" class="admin-sem-pedidos" hidden>
+          <div class="admin-sem-pedidos-icone">✓</div>
+
+          <h3>Nenhum pedido aguardando</h3>
+
+          <p>Os novos pedidos aparecerão automaticamente aqui.</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL DE RECUSA -->
+    <div id="modal-recusar-pedido" class="admin-modal" hidden>
+      <div class="admin-modal-overlay"></div>
+
+      <section
+        class="admin-modal-conteudo"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-modal-recusa"
+      >
+        <button
+          type="button"
+          class="admin-modal-fechar"
+          id="fechar-modal-recusa"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+
+        <span class="admin-modal-label"> RECUSAR PEDIDO </span>
+
+        <h2 id="titulo-modal-recusa">
+          Por que o pedido não pode ser atendido?
+        </h2>
+
+        <p>
+          O motivo informado será exibido para o cliente na tela de
+          acompanhamento.
+        </p>
+
+        <div class="motivos-recusa">
+          <label class="motivo-recusa-opcao">
+            <input
+              type="radio"
+              name="motivo-recusa"
+              value="Produto indisponível"
+            />
+
+            <span>Produto indisponível</span>
+          </label>
+
+          <label class="motivo-recusa-opcao">
+            <input
+              type="radio"
+              name="motivo-recusa"
+              value="Sem entregador disponível"
+            />
+
+            <span>Sem entregador disponível</span>
+          </label>
+
+          <label class="motivo-recusa-opcao">
+            <input
+              type="radio"
+              name="motivo-recusa"
+              value="Loja encerrando o atendimento"
+            />
+
+            <span>Loja encerrando o atendimento</span>
+          </label>
+
+          <label class="motivo-recusa-opcao">
+            <input
+              type="radio"
+              name="motivo-recusa"
+              value="Endereço fora da área de entrega"
+            />
+
+            <span>Endereço fora da área de entrega</span>
+          </label>
+
+          <label class="motivo-recusa-opcao">
+            <input type="radio" name="motivo-recusa" value="outro" />
+
+            <span>Outro motivo</span>
+          </label>
+        </div>
+
+        <div class="campo-motivo-personalizado">
+          <label for="motivo-recusa-texto"> Informe mais detalhes </label>
+
+          <textarea
+            id="motivo-recusa-texto"
+            rows="4"
+            maxlength="250"
+            placeholder="Ex: Estamos sem Heineken Long Neck disponível no momento."
+          ></textarea>
+
+          <small> Esta mensagem será exibida para o cliente. </small>
+        </div>
+
+        <div class="admin-modal-acoes">
+          <button
+            type="button"
+            class="btn-admin btn-admin-cancelar"
+            id="cancelar-recusa"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            class="btn-admin btn-admin-confirmar-recusa"
+            id="confirmar-recusa"
+          >
+            Confirmar Recusa
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- MODAL DE SAÍDA PARA ENTREGA -->
+    <div id="modal-saida-entrega" class="admin-modal" hidden>
+      <div class="admin-modal-overlay"></div>
+
+      <section
+        class="admin-modal-conteudo"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="titulo-modal-entrega"
+      >
+        <button
+          type="button"
+          class="admin-modal-fechar"
+          id="fechar-modal-entrega"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+
+        <span class="admin-modal-label"> SAÍDA PARA ENTREGA </span>
+
+        <h2 id="titulo-modal-entrega">Informe a previsão de entrega</h2>
+
+        <p>Essa previsão será mostrada automaticamente para o cliente.</p>
+
+        <div class="campo-previsao-entrega">
+          <label for="previsao-entrega"> Tempo estimado </label>
+
+          <div class="input-previsao-wrapper">
+            <input
+              type="number"
+              id="previsao-entrega"
+              min="5"
+              max="180"
+              step="5"
+              value="30"
+            />
+
+            <span>minutos</span>
+          </div>
+        </div>
+
+        <div class="previsoes-rapidas">
+          <button type="button" data-minutos="15">15 min</button>
+
+          <button type="button" data-minutos="20">20 min</button>
+
+          <button type="button" data-minutos="30">30 min</button>
+
+          <button type="button" data-minutos="40">40 min</button>
+
+          <button type="button" data-minutos="60">60 min</button>
+        </div>
+
+        <div class="admin-modal-acoes">
+          <button
+            type="button"
+            class="btn-admin btn-admin-cancelar"
+            id="cancelar-saida-entrega"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="button"
+            class="btn-admin btn-admin-confirmar-entrega"
+            id="confirmar-saida-entrega"
+          >
+            Confirmar Saída
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer-admin">
+      <p class="copyright">
+        &copy; 2026 Depósito Demo | Desenvolvido por Hugo Sande Desenvolvimento
+        Web
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

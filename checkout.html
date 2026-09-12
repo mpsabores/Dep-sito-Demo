@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Depósito de bebidas" />
+    <meta
+      name="keywords"
+      content="Depósito de bebidas, Depósito, Bebidas, Cerveja, Refrigerante, Água, Suco"
+    />
+    <meta name="author" content="Hugo Sande Corrêa dos Santos" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Depósito Demo</title>
+  </head>
+  <body>
+    <header>
+      <div class="pesquisar-form">
+        <form id="form-busca" action="#" method="get">
+          <label for="busca" class="sr-only">Procurar no Site</label>
+          <div class="search-wrapper">
+            <input
+              type="search"
+              id="busca"
+              name="q"
+              placeholder="Digite Aqui"
+              required
+              autocomplete="off"
+            />
+            <div id="sugestoes" class="sugestoes"></div>
+          </div>
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
+      <h1>DEPÓSITO DEMO</h1>
+    </header>
+    <main id="main-checkout">
+      <section class="checkout-container">
+        <!-- CABEÇALHO -->
+        <div class="checkout-intro">
+          <span class="checkout-etiqueta">FINALIZAÇÃO DO PEDIDO</span>
+          <h2>Checkout</h2>
+          <p>Confira os dados do pedido e escolha uma forma de pagamento.</p>
+        </div>
+
+        <!-- AVISO DE DEMONSTRAÇÃO -->
+        <div class="checkout-aviso">
+          <span class="checkout-aviso-icone">ℹ️</span>
+
+          <div>
+            <strong>Checkout demonstrativo</strong>
+            <p>
+              Nenhuma cobrança será realizada e nenhum pagamento será
+              processado.
+            </p>
+          </div>
+        </div>
+
+        <div class="checkout-grid">
+          <!-- COLUNA ESQUERDA -->
+          <div class="checkout-principal">
+            <!-- DADOS DO CLIENTE -->
+            <section class="checkout-card">
+              <div class="checkout-card-titulo">
+                <span class="checkout-numero">1</span>
+
+                <div>
+                  <h3>Dados para Entrega</h3>
+                  <p>Confira as informações preenchidas no carrinho.</p>
+                </div>
+              </div>
+
+              <div class="dados-checkout">
+                <div class="dado-item">
+                  <span>Cliente</span>
+                  <strong id="checkout-nome">Nome do cliente</strong>
+                </div>
+
+                <div class="dado-item">
+                  <span>WhatsApp</span>
+                  <strong id="checkout-whatsapp">(00) 00000-0000</strong>
+                </div>
+
+                <div class="dado-item dado-completo">
+                  <span>Endereço de Entrega</span>
+                  <strong id="checkout-endereco">
+                    Endereço informado pelo cliente
+                  </strong>
+                </div>
+
+                <div class="dado-item">
+                  <span>Bairro / Localidade</span>
+                  <strong id="checkout-bairro">Localidade</strong>
+                </div>
+
+                <div class="dado-item">
+                  <span>Referência</span>
+                  <strong id="checkout-referencia">Não informado</strong>
+                </div>
+              </div>
+
+              <a href="carrinho.html" class="btn-editar-dados">
+                ← Editar dados da entrega
+              </a>
+            </section>
+
+            <!-- FORMA DE PAGAMENTO -->
+            <section class="checkout-card">
+              <div class="checkout-card-titulo">
+                <span class="checkout-numero">2</span>
+
+                <div>
+                  <h3>Forma de Pagamento</h3>
+                  <p>Escolha como deseja pagar o pedido.</p>
+                </div>
+              </div>
+
+              <div class="formas-pagamento">
+                <!-- PIX -->
+                <label class="pagamento-opcao">
+                  <input type="radio" name="forma-pagamento" value="pix" />
+
+                  <span class="pagamento-radio"></span>
+
+                  <div class="pagamento-info">
+                    <strong>Pix</strong>
+                    <span>Pagamento rápido e fácil.</span>
+                  </div>
+
+                  <span class="pagamento-tag">Mais rápido</span>
+                </label>
+
+                <!-- DÉBITO -->
+                <label class="pagamento-opcao">
+                  <input type="radio" name="forma-pagamento" value="debito" />
+
+                  <span class="pagamento-radio"></span>
+
+                  <div class="pagamento-info">
+                    <strong>Cartão de Débito</strong>
+                    <span>Pagamento realizado na entrega.</span>
+                  </div>
+                </label>
+
+                <!-- CRÉDITO -->
+                <label class="pagamento-opcao">
+                  <input type="radio" name="forma-pagamento" value="credito" />
+
+                  <span class="pagamento-radio"></span>
+
+                  <div class="pagamento-info">
+                    <strong>Cartão de Crédito</strong>
+                    <span> Pagamento realizado na entrega. </span>
+                  </div>
+
+                  <span class="pagamento-taxa">+4,99%</span>
+                </label>
+
+                <!-- DINHEIRO -->
+                <label class="pagamento-opcao">
+                  <input type="radio" name="forma-pagamento" value="dinheiro" />
+
+                  <span class="pagamento-radio"></span>
+
+                  <div class="pagamento-info">
+                    <strong>Dinheiro</strong>
+                    <span>Informe abaixo se precisar de troco.</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- TROCO -->
+              <div id="area-troco" class="area-troco">
+                <label for="troco"> Precisa de troco? </label>
+
+                <input
+                  type="number"
+                  id="troco"
+                  name="troco"
+                  min="0"
+                  step="0.01"
+                  placeholder="Ex.: 100,00"
+                />
+
+                <small> Deixe em branco caso não precise de troco. </small>
+              </div>
+            </section>
+
+            <!-- OBSERVAÇÃO -->
+            <section class="checkout-card">
+              <div class="checkout-card-titulo">
+                <span class="checkout-numero">3</span>
+
+                <div>
+                  <h3>Observações do Pedido</h3>
+                  <p>Informações adicionais para a loja.</p>
+                </div>
+              </div>
+
+              <div class="checkout-observacao">
+                <p id="checkout-observacao">Nenhuma observação adicionada.</p>
+              </div>
+            </section>
+          </div>
+
+          <!-- COLUNA DIREITA -->
+          <aside class="checkout-resumo">
+            <div class="resumo-checkout-card">
+              <h3>Resumo do Pedido</h3>
+
+              <!-- PRODUTOS INSERIDOS PELO JAVASCRIPT -->
+              <div id="checkout-itens" class="checkout-itens">
+                <div class="checkout-item exemplo-item">
+                  <div>
+                    <strong>Produto demonstrativo</strong>
+                    <span>1 unidade</span>
+                  </div>
+
+                  <strong>R$ 0,00</strong>
+                </div>
+              </div>
+
+              <div class="checkout-divisor"></div>
+
+              <div class="checkout-valor">
+                <span>Subtotal</span>
+                <strong id="checkout-subtotal">R$ 0,00</strong>
+              </div>
+
+              <div class="checkout-valor">
+                <span>Taxa de Entrega</span>
+                <strong id="checkout-taxa-entrega">R$ 0,00</strong>
+              </div>
+
+              <div id="linha-taxa-cartao" class="checkout-valor taxa-cartao">
+                <span>Taxa do Cartão</span>
+                <strong id="checkout-taxa-cartao">R$ 0,00</strong>
+              </div>
+
+              <div class="checkout-divisor"></div>
+
+              <div class="checkout-total">
+                <span>Total</span>
+                <strong id="checkout-total">R$ 0,00</strong>
+              </div>
+
+              <button
+                type="button"
+                id="btn-confirmar-pedido"
+                class="btn-confirmar-pedido"
+                disabled
+              >
+                Confirmar Pedido
+              </button>
+
+              <p class="checkout-seguranca">
+                🔒 Nenhum pagamento real será realizado.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <!-- NAVEGAÇÃO -->
+        <div class="btn-voltarcontainer checkout-navegacao">
+          <a href="carrinho.html" class="btn-voltar"> ← Voltar ao Carrinho </a>
+
+          <a href="produtos.html" class="btn-voltar"> Continuar Comprando → </a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p class="horario-func">
+        Horário de funcionamento: Segunda a Sexta, 8h às 19h | Sábado, Domingo e
+        Feriados, 9h às 22h
+      </p>
+      <p class="copyright">
+        &copy; 2026 Depósito Demo | Desenvolvido por Hugo Sande Desenvolvimento
+        Web
+      </p>
+      <p class="aviso-demo">
+        Loja demonstrativa. Nenhum pedido ou pagamento é processado.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

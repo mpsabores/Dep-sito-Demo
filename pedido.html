@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Acompanhamento de pedido - Depósito Demo"
+    />
+
+    <meta name="author" content="Hugo Sande Corrêa dos Santos" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link rel="stylesheet" href="styles.css" />
+
+    <title>Acompanhar Pedido | Depósito Demo</title>
+  </head>
+
+  <body>
+    <header class="header-pedido">
+      <h1>DEPÓSITO DEMO</h1>
+    </header>
+
+    <main id="main-pedido">
+      <section class="pedido-container">
+        <!-- Cabeçalho do pedido -->
+        <div class="pedido-topo">
+          <span class="pedido-label">PEDIDO DEMONSTRATIVO</span>
+
+          <h2 id="pedido-numero">Pedido #----</h2>
+
+          <p class="pedido-permanencia">
+            Mantenha esta página aberta para acompanhar as atualizações do seu
+            pedido.
+          </p>
+        </div>
+
+        <!-- Status principal -->
+        <div class="pedido-status-card" id="pedido-status-card">
+          <div class="status-icone-container">
+            <div id="pedido-status-icone" class="pedido-spinner"></div>
+          </div>
+
+          <span class="status-legenda">STATUS DO PEDIDO</span>
+
+          <h2 id="pedido-status-titulo">Aguardando confirmação da loja</h2>
+
+          <p id="pedido-status-descricao">
+            Seu pedido foi recebido. Aguarde alguns minutos enquanto a loja
+            verifica a disponibilidade dos produtos e da entrega.
+          </p>
+        </div>
+
+        <!-- Linha do tempo -->
+        <div class="pedido-timeline">
+          <div
+            class="timeline-etapa concluida"
+            id="etapa-recebido"
+            data-etapa="recebido"
+          >
+            <div class="timeline-icone">✓</div>
+
+            <div class="timeline-texto">
+              <strong>Pedido recebido</strong>
+              <span>Seu pedido foi enviado para a loja.</span>
+            </div>
+          </div>
+
+          <div
+            class="timeline-etapa ativa"
+            id="etapa-confirmacao"
+            data-etapa="confirmacao"
+          >
+            <div class="timeline-icone">2</div>
+
+            <div class="timeline-texto">
+              <strong>Confirmação da loja</strong>
+              <span>Aguardando a loja conferir seu pedido.</span>
+            </div>
+          </div>
+
+          <div class="timeline-etapa" id="etapa-preparo" data-etapa="preparo">
+            <div class="timeline-icone">3</div>
+
+            <div class="timeline-texto">
+              <strong>Preparando pedido</strong>
+              <span>O pedido será separado para entrega.</span>
+            </div>
+          </div>
+
+          <div class="timeline-etapa" id="etapa-entrega" data-etapa="entrega">
+            <div class="timeline-icone">4</div>
+
+            <div class="timeline-texto">
+              <strong>Saiu para entrega</strong>
+              <span>O entregador estará a caminho do seu endereço.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo -->
+        <section class="pedido-resumo">
+          <h3>Resumo do Pedido</h3>
+
+          <div class="pedido-resumo-grid">
+            <div class="pedido-resumo-item">
+              <span>Cliente</span>
+              <strong id="pedido-cliente">---</strong>
+            </div>
+
+            <div class="pedido-resumo-item">
+              <span>Pagamento</span>
+              <strong id="pedido-pagamento">---</strong>
+            </div>
+
+            <div class="pedido-resumo-item">
+              <span>Total</span>
+              <strong id="pedido-total">R$ 0,00</strong>
+            </div>
+
+            <div class="pedido-resumo-item">
+              <span>Entrega</span>
+              <strong id="pedido-bairro">---</strong>
+            </div>
+          </div>
+
+          <div class="pedido-endereco">
+            <span>Endereço de entrega</span>
+            <strong id="pedido-endereco">---</strong>
+          </div>
+        </section>
+
+        <!-- Área exibida somente se o pedido for recusado -->
+        <section class="pedido-recusado" id="pedido-recusado" hidden>
+          <div class="pedido-recusado-icone">!</div>
+
+          <h2>Não foi possível confirmar seu pedido</h2>
+
+          <p>A loja informou o seguinte motivo:</p>
+
+          <div class="motivo-rejeicao">
+            <strong id="pedido-motivo-rejeicao"> Motivo não informado. </strong>
+          </div>
+
+          <p>
+            Você pode conversar diretamente com a loja para verificar outras
+            opções.
+          </p>
+
+          <a
+            href="https://wa.me/5571983413594?text=Olá!%20Meu%20pedido%20não%20pôde%20ser%20confirmado%20pelo%20site.%20Gostaria%20de%20verificar%20se%20há%20outra%20forma%20de%20realizar%20o%20pedido.%20Poderia%20me%20ajudar?"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="btn-whatsapp-pedido"
+            class="btn-whatsapp-pedido"
+            ><img src="img/whatsapp.png" alt="WhatsApp" class="social-icone" />
+            Falar pelo WhatsApp
+          </a>
+
+          <a href="index.html" class="btn-voltar"> ← Voltar ao início </a>
+        </section>
+
+        <!-- Área exibida quando sair para entrega -->
+        <section class="pedido-entrega-info" id="pedido-entrega-info" hidden>
+          <span class="pedido-entrega-icone">🛵</span>
+
+          <div>
+            <h2>Seu pedido está a caminho!</h2>
+
+            <p>O entregador já saiu para realizar sua entrega.</p>
+
+            <p class="previsao-entrega">
+              Previsão informada pela loja:
+              <strong id="pedido-previsao-entrega">-- minutos</strong>
+            </p>
+            <a href="index.html" class="btn-voltar"> ← Voltar ao início </a>
+          </div>
+        </section>
+
+        <!-- Aviso da demonstração -->
+        <div class="pedido-aviso-demo">
+          <strong>Loja demonstrativa</strong>
+
+          <p>
+            Este pedido faz parte de uma demonstração. Nenhuma cobrança real
+            será efetuada.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="horario-func">
+        Horário de funcionamento: Segunda a Sexta, 8h às 19h | Sábado, Domingo e
+        Feriados, 9h às 22h
+      </p>
+
+      <p class="copyright">
+        &copy; 2026 Depósito Demo | Desenvolvido por Hugo Sande Desenvolvimento
+        Web
+      </p>
+
+      <p class="aviso-demo">
+        Loja demonstrativa. Nenhum pedido ou pagamento é processado.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
