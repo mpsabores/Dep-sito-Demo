@@ -86,8 +86,8 @@ function obterStatusLoja(agora = new Date()) {
   const dia = agora.getDay();
   const minutos = agora.getHours() * 60 + agora.getMinutes();
   const fimDeSemana = dia === 0 || dia === 6;
-  const abertura = fimDeSemana ? 0 * 60 : 8 * 60;
-  const fechamento = fimDeSemana ? 22 * 60 : 19 * 60;
+  const abertura = fimDeSemana ? 0 * 60 : 0 * 60;
+  const fechamento = fimDeSemana ? 23 * 60 : 23 * 60;
   const aberta = minutos >= abertura && minutos < fechamento;
 
   let proximaAbertura = "";
